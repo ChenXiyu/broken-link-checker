@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+cd $(dirname $0)/..
+
+: ${1?Error! environment is required.}
+
+auto/_stackup broken-link-checker-$1 up \
+  -t deployments/template.yml \
+  -p deployments/$1/parameters.yml
