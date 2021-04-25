@@ -4,6 +4,6 @@ cd $(dirname $0)/..
 
 : ${1?Error! environment is required.}
 
-auto/_stackup broken-link-checker-$1 up \
+auto/_stackup blog-link-checker up \
   -t deployments/template.yml \
   -p deployments/$1/parameters.yml

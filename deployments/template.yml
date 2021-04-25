@@ -51,10 +51,10 @@ Resources:
   SyntheticsCanary:
     Type: AWS::Synthetics::Canary
     Properties:
-      Name: !Sub '${AWS::StackName}-canary'
+      Name: !Sub '${AWS::StackName}'
       ExecutionRoleArn: !GetAtt ['canaryExecutionRole', 'Arn']
       Code:
-        Handler: !Sub '${AWS::StackName}-canary.handler'
+        Handler: !Sub '${AWS::StackName}.handler'
         Script: !Sub |
           var synthetics = require('Synthetics');
           const log = require('SyntheticsLogger');
