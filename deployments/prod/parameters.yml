@@ -1,1 +1,2 @@
 TargetUrls: https://blog.94xychen.net
+Schedule: cron(0 0 1 * ? *) # per month

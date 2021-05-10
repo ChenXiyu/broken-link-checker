@@ -10,6 +10,10 @@ Parameters:
     Type: String
     Default: syn-nodejs-puppeteer-3.1
     Description: The runtime version to use for the canary
+  Schedule:
+    Type: String
+    Default: rate(0 hour)
+    Description: A rate expression or a cron expression that defines how often the canary is to run.
 
 Resources:
   canaryArtifactsBucket:
@@ -304,8 +308,7 @@ Resources:
       ArtifactS3Location: !Sub 's3://${canaryArtifactsBucket}'
       RuntimeVersion: !Ref CanaryRuntime
       Schedule:
-        Expression: rate(1 hour)
-        DurationInSeconds: 3600
+        Expression: !Ref Schedule
       RunConfig:
         TimeoutInSeconds: 840
         EnvironmentVariables:
