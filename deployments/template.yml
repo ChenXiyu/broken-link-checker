@@ -16,7 +16,10 @@ Resources:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
     Properties:
-      BucketName: !Sub '${AWS::StackName}-artifacts-bucket'
+      BucketName:
+       Fn::Sub:
+       - '${AWS::StackName}-artifacts-bucket-${stackId}'
+       - { stackId: !Select [2, !Split ['-', !Select [2, !Split ['/', !Ref AWS::StackId]]]] }
 
   canaryExecutionRole:
     Type: AWS::IAM::Role
